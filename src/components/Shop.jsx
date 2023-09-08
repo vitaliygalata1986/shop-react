@@ -9,15 +9,15 @@ function Shop() {
   const [loading, setloading] = useState([true]); // состояние загрузки
   const [order, setOrder] = useState([]); // список заказов
 
-  console.log('order=>', order);
+  // console.log('order=>', order);
 
   const addToCard = (item) => {
-    console.log('item=>', item);
-    console.log('order=>', order);
+    // console.log('item=>', item);
+    // console.log('order=>', order);
     // проверим - а есть ли в стейте заказа данный товар для того, чтобы не создавать новый
     const itemIndex = order.findIndex((orderItem) => orderItem.id === item.id); // если id товара, который мы добавляем найдется с id товара в нашем заказе, то получим index этого массива
     // иначе findIndex вернет -1
-    console.log('itemIndex=>', itemIndex);
+    // console.log('itemIndex=>', itemIndex);
 
     if (itemIndex < 0) {
       const newItem = {
