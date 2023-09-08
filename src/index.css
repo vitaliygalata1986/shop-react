@@ -40,3 +40,19 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+
+.cart {
+  position: fixed;
+  top: 5rem;
+  right: 2rem;
+  cursor: pointer;
+  z-index: 5;
+  padding: 1rem;
+}
+
+@media (max-width: 767px) {
+  .cart {
+    bottom: 2rem;
+    top: unset;
+  }
+}
