@@ -1,6 +1,6 @@
 import { GoodsItem } from './GoodsItem';
 
-function GoodList({ goods = [] }) {
+function GoodList({ goods = [], addToCard = Function.prototype }) {
   // будем получать массив товаров, по умолчанию пустой массив
 
   if (!goods.length) {
@@ -11,7 +11,7 @@ function GoodList({ goods = [] }) {
   return (
     <div className="goods">
       {goods.map((item) => (
-        <GoodsItem key={item.mainId} {...item} />
+        <GoodsItem key={item.mainId} {...item} addToCard={addToCard} />
       ))}
     </div>
   );
