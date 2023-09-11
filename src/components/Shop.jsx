@@ -3,11 +3,19 @@ import { API_KEY, API_URL } from '../config';
 import { Preloader } from './Preloader';
 import { GoodList } from './GoodList';
 import { Cart } from './Cart';
+import { BasketList } from './BasketList';
 
 function Shop() {
   const [goods, setGoods] = useState([]); // list products
   const [loading, setloading] = useState([true]); // состояние загрузки
   const [order, setOrder] = useState([]); // список заказов
+  const [isBasketShow, setBasketShow] = useState(false); // изначально корзина не видна
+
+  // функция показа корзины
+
+  const handleBasketShow = () => {
+    setBasketShow(!isBasketShow);
+  };
 
   // console.log('order=>', order);
 
@@ -58,11 +66,15 @@ function Shop() {
 
   return (
     <main className="container content">
-      <Cart quantity={order.length} />
+      <Cart quantity={order.length} handleBasketShow={handleBasketShow} />
       {loading ? (
         <Preloader />
       ) : (
         <GoodList goods={goods} addToCard={addToCard} />
+      )}
+
+      {isBasketShow && (
+        <BasketList order={order} handleBasketShow={handleBasketShow} />
       )}
     </main>
   );
