@@ -19,6 +19,11 @@ function Shop() {
 
   // console.log('order=>', order);
 
+  const removeItemFromBasket = (orderId) => {
+    const newOrder = order.filter((orderItem) => orderItem.id !== orderId);
+    setOrder(newOrder);
+  };
+
   const addToCard = (item) => {
     // console.log('item=>', item);
     // console.log('order=>', order);
@@ -74,7 +79,11 @@ function Shop() {
       )}
 
       {isBasketShow && (
-        <BasketList order={order} handleBasketShow={handleBasketShow} />
+        <BasketList
+          order={order}
+          handleBasketShow={handleBasketShow}
+          removeItemFromBasket={removeItemFromBasket}
+        />
       )}
     </main>
   );
