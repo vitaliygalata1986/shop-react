@@ -4,8 +4,10 @@ function BasketList({
   order,
   handleBasketShow = Function.prototype,
   removeItemFromBasket = Function.prototype,
+  decQuantity,
+  incQuantity,
 }) {
-  console.log(order);
+  // console.log(order);
 
   const totalPrice = order.reduce((sum, item) => {
     return (sum += item.priceProduct * item.quantity);
@@ -26,6 +28,8 @@ function BasketList({
         order.map((item) => (
           <BasketItem
             removeItemFromBasket={removeItemFromBasket}
+            decQuantity={decQuantity}
+            incQuantity={incQuantity}
             key={item.id}
             {...item}
           />

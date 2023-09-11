@@ -11,8 +11,36 @@ function Shop() {
   const [order, setOrder] = useState([]); // список заказов
   const [isBasketShow, setBasketShow] = useState(false); // изначально корзина не видна
 
-  // функция показа корзины
+  const decQuantity = (orderId) => {
+    const updateOrder = order.map((orderItem) => {
+      if (orderItem.id === orderId) {
+        const newQuantity = orderItem.quantity - 1;
+        return {
+          ...orderItem,
+          quantity: newQuantity >= 0 ? newQuantity : 0,
+        };
+      } else {
+        return orderItem;
+      }
+    });
+    setOrder(updateOrder);
+  };
 
+  const incQuantity = (orderId) => {
+    const updateOrder = order.map((orderItem) => {
+      if (orderItem.id === orderId) {
+        return {
+          ...orderItem,
+          quantity: orderItem.quantity + 1,
+        };
+      } else {
+        return orderItem;
+      }
+    });
+    setOrder(updateOrder);
+  };
+
+  // функция показа корзины
   const handleBasketShow = () => {
     setBasketShow(!isBasketShow);
   };
@@ -83,6 +111,8 @@ function Shop() {
           order={order}
           handleBasketShow={handleBasketShow}
           removeItemFromBasket={removeItemFromBasket}
+          decQuantity={decQuantity}
+          incQuantity={incQuantity}
         />
       )}
     </main>

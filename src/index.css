@@ -82,6 +82,17 @@ nav {
   cursor: pointer;
 }
 
+.basket-quantity {
+  cursor: pointer;
+  vertical-align: middle;
+  color: #26a69a;
+  margin: 0 5px;
+}
+
+.collection .collection-item {
+  user-select: none;
+}
+
 @keyframes show {
   from {
     top: 70%;
