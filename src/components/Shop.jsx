@@ -4,12 +4,18 @@ import { Preloader } from './Preloader';
 import { GoodList } from './GoodList';
 import { Cart } from './Cart';
 import { BasketList } from './BasketList';
+import Alert from './Alert';
 
 function Shop() {
   const [goods, setGoods] = useState([]); // list products
   const [loading, setloading] = useState([true]); // состояние загрузки
   const [order, setOrder] = useState([]); // список заказов
   const [isBasketShow, setBasketShow] = useState(false); // изначально корзина не видна
+  const [alertName, setAlertName] = useState(''); // изначально имя товара - пустая строка
+
+  const closeAlert = () => {
+    setAlertName('');
+  };
 
   const decQuantity = (orderId) => {
     const updateOrder = order.map((orderItem) => {
@@ -81,6 +87,7 @@ function Shop() {
       });
       setOrder(newOrder); // новый сформированный массив отправляем в наш стейт
     }
+    setAlertName(item.displayName);
   };
 
   useEffect(() => {
@@ -115,6 +122,7 @@ function Shop() {
           incQuantity={incQuantity}
         />
       )}
+      {alertName && <Alert name={alertName} closeAlert={closeAlert} />}
     </main>
   );
 }

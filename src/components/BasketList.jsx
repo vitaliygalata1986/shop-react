@@ -41,6 +41,9 @@ function BasketList({
       <li className="collection-item active">
         Общая стоимость: {totalPrice} грн.
       </li>
+      <li className="collection-item">
+        <button className="btn btn-small">Оформить</button>
+      </li>
       <i className="material-icons basket-close" onClick={handleBasketShow}>
         close
       </i>

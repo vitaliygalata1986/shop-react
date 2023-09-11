@@ -9,7 +9,7 @@ function BasketItem({
 }) {
   return (
     <li className="collection-item">
-      {name}
+      <span className="collection-item__span">{name}</span>
       <i
         className="material-icons basket-quantity"
         onClick={() => decQuantity(id)}

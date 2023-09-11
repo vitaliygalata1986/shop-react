@@ -89,8 +89,33 @@ nav {
   margin: 0 5px;
 }
 
+.basket-quantity:first-of-type {
+  margin-right: 0;
+}
+
 .collection .collection-item {
   user-select: none;
+}
+
+#toast-container {
+  top: 2.8rem !important;
+  animation: fade-in 250ms ease-in-out;
+}
+
+@media (max-width: 600px) {
+  #toast-container {
+    top: 2rem !important;
+  }
+  .toast {
+    width: 90%;
+  }
+  .collection-item__span {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .basket-quantity:first-of-type {
+    margin-left: 0;
+  }
 }
 
 @keyframes show {
@@ -101,5 +126,16 @@ nav {
   to {
     top: 50%;
     opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
   }
 }
